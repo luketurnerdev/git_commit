@@ -9,49 +9,71 @@
 
 #user can exit by CTRL+C but maybe this can change later.
 
+numbers = [0,1,2,3,4,5,6,7,8,9]
 
 
-def commit_check
-#Start by getting the current time at instantiation of the program
-start_time = Time.now
-running = true
-
-puts "Running..."
-while running
-    end_time = Time.now
-    time_elapsed =  end_time - start_time;
+def commit_check (wait_time)
+    puts "We will wait #{wait_time} minutes between checks."
+    wait_time *=60
+    #Start by getting the current time at instantiation of the program
+    start_time = Time.now
+    running = true
     
-    #If the amount of (seconds) has passed:
-    #900 is 15 minutes
-
-    if time_elapsed % 900 == 0
-
-        puts "Time to git commit!"
-        system("say Time to git commit!")
-        system("say Time to git commit!")
-        system("say Time to git commit!")
-
+    puts "Running..."
+    while running
+        end_time = Time.now
+        time_elapsed =  end_time - start_time;
         
-        puts "Type OK to acknowledge!"
-        valid_input = false
-        input = gets.chomp.downcase
-
-        until valid_input == true
-            if input == "ok"
-                valid_input == true
-                commit_check
+        #If the amount of (seconds) has passed:
+        #900 is 15 minutes
     
-            else
-                puts "Invalid input."
-
+        if time_elapsed % 900 == 0
+    
+            puts "Time to git commit!"
+            system("say Time to git commit!")
+            system("say Time to git commit!")
+            system("say Time to git commit!")
+    
+            
+            puts "Type OK to acknowledge!"
+            valid_input = false
+            input = gets.chomp.downcase
+    
+            until valid_input == true
+                if input == "ok"
+                    valid_input == true
+                    commit_check
+        
+                else
+                    puts "Invalid input."
+    
+                end
             end
+            
+    
         end
-        
-
+    
+            
+    end
     end
 
-        
-end
-end
+    valid_time = false
 
-commit_check
+    until valid_time == true 
+
+        puts "How long do you want to wait (in minutes) ?"
+            time = gets.chomp
+            #check if this is an integer
+            if time.scan(/\D/).empty?
+                time = time.to_i
+                valid_time = true
+                commit_check(time)
+            else 
+                puts "Invalid."
+
+            end
+
+            
+    end
+    
+    
