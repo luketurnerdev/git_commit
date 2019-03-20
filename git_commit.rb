@@ -9,12 +9,11 @@
 
 #user can exit by CTRL+C but maybe this can change later.
 
-numbers = [0,1,2,3,4,5,6,7,8,9]
 
 
 def commit_check (wait_time)
     puts "We will wait #{wait_time} minutes between checks."
-    wait_time *=60
+    
     #Start by getting the current time at instantiation of the program
     start_time = Time.now
     running = true
@@ -26,8 +25,8 @@ def commit_check (wait_time)
         
         #If the amount of (seconds) has passed:
         #900 is 15 minutes
-    
-        if time_elapsed % 900 == 0
+        wait_time_seconds = wait_time * 60
+        if time_elapsed % wait_time_seconds == 0
     
             puts "Time to git commit!"
             system("say Time to git commit!")
@@ -42,7 +41,7 @@ def commit_check (wait_time)
             until valid_input == true
                 if input == "ok"
                     valid_input == true
-                    commit_check
+                    commit_check(wait_time)
         
                 else
                     puts "Invalid input."
