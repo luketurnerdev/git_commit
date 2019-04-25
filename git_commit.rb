@@ -13,7 +13,6 @@
 
 def commit_check (wait_time)
     puts "We will wait #{wait_time} minutes between checks."
-    
     #Start by getting the current time at instantiation of the program
     start_time = Time.now
     running = true
@@ -25,15 +24,12 @@ def commit_check (wait_time)
         
         #If the amount of (seconds) has passed:
         #900 is 15 minutes
-        wait_time_seconds = wait_time * 60
-        if time_elapsed % wait_time_seconds == 0
+        if time_elapsed % wait_time * 60 == 0
     
             puts "Time to git commit!"
-            system("say Time to git commit!")
-            system("say Time to git commit!")
-            system("say Time to git commit!")
-    
             
+            system("say Time to git commit!")
+            system("osascript display_dialog.scpt")
             puts "Type OK to acknowledge!"
             valid_input = false
             input = gets.chomp.downcase
