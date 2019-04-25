@@ -24,7 +24,7 @@ def commit_check (wait_time)
         
         #If the amount of (seconds) has passed:
         #900 is 15 minutes
-        if time_elapsed % wait_time * 60 == 0
+        if time_elapsed % (wait_time * 60) == 0
     
             puts "Time to git commit!"
             
